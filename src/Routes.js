@@ -1,7 +1,7 @@
 import React from 'react';
-import {hashHistory, browserHistory, Route, Router} from 'react-router';
+import {HashRouter, Route} from 'react-router-dom';
 import App from './containers/App';
-import {Page404} from './pages/Page404';
+import {Page404} from './pages';
 
 /**
  * Utilize process.env.PUBLIC_URL that is exposed by create-react-app internally:
@@ -12,11 +12,11 @@ import {Page404} from './pages/Page404';
  */
 
 export default () => (
-    <Router history={browserHistory}>
-        <Route path={`${process.env.PUBLIC_URL}/`} component={App}>
-            <Route path='/one' />
-            <Route path='/two' />
-        </Route>
+    <HashRouter>
+        <div>
+            <Route path='/' component={App} />
+        </div>
+
         <Route path='*' component={Page404} />
-    </Router>
+    </HashRouter>
 );
